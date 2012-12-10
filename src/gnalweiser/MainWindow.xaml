@@ -1,7 +1,7 @@
 ﻿<Window x:Class="gnalweiser.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525" Name="MainForm">
     <Grid>
         <TextBox Height="23" HorizontalAlignment="Left" Margin="294,28,0,0" Name="txtTo" VerticalAlignment="Top" Width="70" />
         <TextBox Height="23" HorizontalAlignment="Left" Margin="113,28,0,0" Name="txtFrom" VerticalAlignment="Top" Width="82" />

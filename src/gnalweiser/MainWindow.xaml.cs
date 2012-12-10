@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Reflection;
+using System.Windows;
 using gnalweiser.lib;
 using System.IO;
 
@@ -9,9 +11,16 @@ namespace gnalweiser
     /// </summary>
     public partial class MainWindow : Window
     {
+        private const string Appname = "gnalweiser v";
         public MainWindow()
         {
             InitializeComponent();
+
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
+            string version = fileVersionInfo.ProductVersion;
+            MainForm.Title = Appname + version;
+
         }
 
         

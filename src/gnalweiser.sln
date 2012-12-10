@@ -17,4 +17,9 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		BuildVersion_UseGlobalSettings = True
+		BuildVersion_BuildVersioningStyle = None.None.None.Increment
+		BuildVersion_ConfigurationName = Release
+	EndGlobalSection
 EndGlobal
