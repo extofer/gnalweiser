@@ -7,7 +7,7 @@ namespace gnalweiser.lib
 {
    public static class Randomizer
     {
-       public static int GetRandom(int min, int max)
+       public static int GetUnlogRandom(int min, int max)
        {
            Random random = new Random();
            int y = random.Next(min, max);

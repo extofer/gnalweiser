@@ -9,20 +9,26 @@ namespace gnalweiser.lib
 {
     public static class TxtLogger
     {
-        private const string Logfile = "LogFile.txt";
+        private static readonly string logfile = GnalCommon.LogFile;
 
         public static void LogTxt(string text)
         {
-
-            using (FileStream aFile = new FileStream(Logfile, FileMode.Append, FileAccess.Write))
+            using (FileStream aFile = new FileStream(logfile, FileMode.Append, FileAccess.Write))
             {
                 StreamWriter sw = new StreamWriter(aFile);
                 sw.WriteLine(text);
                 sw.Close();
                 aFile.Close();
-
             }
 
+        }
+
+        public static void ValidateFile()
+        {
+            if (!File.Exists(logfile))
+            {
+                File.Create(logfile);
+            }
         }
 
 
@@ -31,7 +37,7 @@ namespace gnalweiser.lib
             //TextReader tr = new StreamReader(Logfile);
             int counter = 0;
             string line;
-            StreamReader file = new StreamReader(Logfile);
+            StreamReader file = new StreamReader(logfile);
             string[] newtext;
 
 

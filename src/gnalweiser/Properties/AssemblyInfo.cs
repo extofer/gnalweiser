@@ -12,7 +12,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Excofer Consulting, LLC")]
 [assembly: AssemblyProduct("gnalweiser")]
-[assembly: AssemblyCopyright("Copyright © Premiere 2012")]
+[assembly: AssemblyCopyright("Copyright © Excofer Consulting, LLC 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -51,5 +51,5 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.0.1.9")]
-[assembly: AssemblyFileVersion("0.0.1.9")]
+[assembly: AssemblyVersion("0.0.1.13")]
+[assembly: AssemblyFileVersion("0.0.1.13")]

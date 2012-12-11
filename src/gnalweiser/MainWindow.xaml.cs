@@ -1,8 +1,10 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
 using gnalweiser.lib;
 using System.IO;
+using System.Configuration;
 
 namespace gnalweiser
 {
@@ -11,48 +13,73 @@ namespace gnalweiser
     /// </summary>
     public partial class MainWindow : Window
     {
-        private const string Appname = "gnalweiser v";
+
+        private int _ifrom;
+        private int _ito;
+        private int _rnd;
+        //TextWriter tw = new StreamWriter("log.txt");
+
         public MainWindow()
         {
             InitializeComponent();
-
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
-            string version = fileVersionInfo.ProductVersion;
-            MainForm.Title = Appname + version;
+            MainForm.Title = GnalCommon.GetVersion();
+            TxtLogger.ValidateFile();
 
         }
 
-        
-        private int _rnd;
-        TextWriter tw = new StreamWriter("log.txt");
-
         private void rdoFail_Checked(object sender, RoutedEventArgs e)
         {
-           
             TxtLogger.LogTxt( _rnd + " |F");
-
         }
 
         private void radioButton1_Checked(object sender, RoutedEventArgs e)
         {
-           
             TxtLogger.LogTxt(_rnd + " |P");
-            
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            int ifrom =  int.Parse(txtFrom.Text);
-            int ito = int.Parse(txtTo.Text);
+            try
+            {
+                txtValidateFrom.Visibility = Visibility.Hidden;
+                txtValidateTo.Visibility = Visibility.Hidden;
+                txtValidate.Visibility = Visibility.Hidden;
 
-            int x = Randomizer.GetRandom(ifrom, ito);
+                if (GnalCommon.ValidateText(txtFrom.Text))
+                {
+                    _ifrom = int.Parse(txtFrom.Text);
+                }
+                else
+                {
+                    txtValidateFrom.Visibility = Visibility.Visible;
+                    txtValidate.Visibility = Visibility.Visible;
+                    return;
+                }
 
-            _rnd = x;
+                if (GnalCommon.ValidateText(txtTo.Text))
+                {
+                    _ito = int.Parse(txtTo.Text);
+                }
+                else
+                {
+                    txtValidateTo.Visibility = Visibility.Visible;
+                    txtValidate.Visibility = Visibility.Visible;
+                    return;
+                }
 
-            RandomNum.Text = _rnd.ToString();
+                int x = Randomizer.GetUnlogRandom(_ifrom, _ito);
+                _rnd = x;
+
+                RandomNum.Text = _rnd.ToString();
 
 
+            }
+            catch
+            {
+            }
         }
+            
+
+
     }
 }
